@@ -16,8 +16,10 @@ import { Route as MainLayoutImport } from './routes/_mainLayout'
 import { Route as IndexImport } from './routes/index'
 import { Route as MainLayoutTexture02Import } from './routes/_mainLayout/texture02'
 import { Route as MainLayoutTexture01Import } from './routes/_mainLayout/texture01'
+import { Route as MainLayoutGltf01Import } from './routes/_mainLayout/gltf01'
 import { Route as MainLayoutGeometry02Import } from './routes/_mainLayout/geometry02'
 import { Route as MainLayoutGeometry01Import } from './routes/_mainLayout/geometry01'
+import { Route as MainLayoutFox01Import } from './routes/_mainLayout/fox01'
 import { Route as MainLayoutFirst3dImport } from './routes/_mainLayout/first3d'
 import { Route as MainLayoutAssistantToolsImport } from './routes/_mainLayout/assistantTools'
 
@@ -52,6 +54,12 @@ const MainLayoutTexture01Route = MainLayoutTexture01Import.update({
   getParentRoute: () => MainLayoutRoute,
 } as any)
 
+const MainLayoutGltf01Route = MainLayoutGltf01Import.update({
+  id: '/gltf01',
+  path: '/gltf01',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
 const MainLayoutGeometry02Route = MainLayoutGeometry02Import.update({
   id: '/geometry02',
   path: '/geometry02',
@@ -61,6 +69,12 @@ const MainLayoutGeometry02Route = MainLayoutGeometry02Import.update({
 const MainLayoutGeometry01Route = MainLayoutGeometry01Import.update({
   id: '/geometry01',
   path: '/geometry01',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
+const MainLayoutFox01Route = MainLayoutFox01Import.update({
+  id: '/fox01',
+  path: '/fox01',
   getParentRoute: () => MainLayoutRoute,
 } as any)
 
@@ -115,6 +129,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainLayoutFirst3dImport
       parentRoute: typeof MainLayoutImport
     }
+    '/_mainLayout/fox01': {
+      id: '/_mainLayout/fox01'
+      path: '/fox01'
+      fullPath: '/fox01'
+      preLoaderRoute: typeof MainLayoutFox01Import
+      parentRoute: typeof MainLayoutImport
+    }
     '/_mainLayout/geometry01': {
       id: '/_mainLayout/geometry01'
       path: '/geometry01'
@@ -127,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/geometry02'
       fullPath: '/geometry02'
       preLoaderRoute: typeof MainLayoutGeometry02Import
+      parentRoute: typeof MainLayoutImport
+    }
+    '/_mainLayout/gltf01': {
+      id: '/_mainLayout/gltf01'
+      path: '/gltf01'
+      fullPath: '/gltf01'
+      preLoaderRoute: typeof MainLayoutGltf01Import
       parentRoute: typeof MainLayoutImport
     }
     '/_mainLayout/texture01': {
@@ -151,8 +179,10 @@ declare module '@tanstack/react-router' {
 interface MainLayoutRouteChildren {
   MainLayoutAssistantToolsRoute: typeof MainLayoutAssistantToolsRoute
   MainLayoutFirst3dRoute: typeof MainLayoutFirst3dRoute
+  MainLayoutFox01Route: typeof MainLayoutFox01Route
   MainLayoutGeometry01Route: typeof MainLayoutGeometry01Route
   MainLayoutGeometry02Route: typeof MainLayoutGeometry02Route
+  MainLayoutGltf01Route: typeof MainLayoutGltf01Route
   MainLayoutTexture01Route: typeof MainLayoutTexture01Route
   MainLayoutTexture02Route: typeof MainLayoutTexture02Route
 }
@@ -160,8 +190,10 @@ interface MainLayoutRouteChildren {
 const MainLayoutRouteChildren: MainLayoutRouteChildren = {
   MainLayoutAssistantToolsRoute: MainLayoutAssistantToolsRoute,
   MainLayoutFirst3dRoute: MainLayoutFirst3dRoute,
+  MainLayoutFox01Route: MainLayoutFox01Route,
   MainLayoutGeometry01Route: MainLayoutGeometry01Route,
   MainLayoutGeometry02Route: MainLayoutGeometry02Route,
+  MainLayoutGltf01Route: MainLayoutGltf01Route,
   MainLayoutTexture01Route: MainLayoutTexture01Route,
   MainLayoutTexture02Route: MainLayoutTexture02Route,
 }
@@ -176,8 +208,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/assistantTools': typeof MainLayoutAssistantToolsRoute
   '/first3d': typeof MainLayoutFirst3dRoute
+  '/fox01': typeof MainLayoutFox01Route
   '/geometry01': typeof MainLayoutGeometry01Route
   '/geometry02': typeof MainLayoutGeometry02Route
+  '/gltf01': typeof MainLayoutGltf01Route
   '/texture01': typeof MainLayoutTexture01Route
   '/texture02': typeof MainLayoutTexture02Route
 }
@@ -188,8 +222,10 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/assistantTools': typeof MainLayoutAssistantToolsRoute
   '/first3d': typeof MainLayoutFirst3dRoute
+  '/fox01': typeof MainLayoutFox01Route
   '/geometry01': typeof MainLayoutGeometry01Route
   '/geometry02': typeof MainLayoutGeometry02Route
+  '/gltf01': typeof MainLayoutGltf01Route
   '/texture01': typeof MainLayoutTexture01Route
   '/texture02': typeof MainLayoutTexture02Route
 }
@@ -201,8 +237,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/_mainLayout/assistantTools': typeof MainLayoutAssistantToolsRoute
   '/_mainLayout/first3d': typeof MainLayoutFirst3dRoute
+  '/_mainLayout/fox01': typeof MainLayoutFox01Route
   '/_mainLayout/geometry01': typeof MainLayoutGeometry01Route
   '/_mainLayout/geometry02': typeof MainLayoutGeometry02Route
+  '/_mainLayout/gltf01': typeof MainLayoutGltf01Route
   '/_mainLayout/texture01': typeof MainLayoutTexture01Route
   '/_mainLayout/texture02': typeof MainLayoutTexture02Route
 }
@@ -215,8 +253,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/assistantTools'
     | '/first3d'
+    | '/fox01'
     | '/geometry01'
     | '/geometry02'
+    | '/gltf01'
     | '/texture01'
     | '/texture02'
   fileRoutesByTo: FileRoutesByTo
@@ -226,8 +266,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/assistantTools'
     | '/first3d'
+    | '/fox01'
     | '/geometry01'
     | '/geometry02'
+    | '/gltf01'
     | '/texture01'
     | '/texture02'
   id:
@@ -237,8 +279,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/_mainLayout/assistantTools'
     | '/_mainLayout/first3d'
+    | '/_mainLayout/fox01'
     | '/_mainLayout/geometry01'
     | '/_mainLayout/geometry02'
+    | '/_mainLayout/gltf01'
     | '/_mainLayout/texture01'
     | '/_mainLayout/texture02'
   fileRoutesById: FileRoutesById
@@ -279,8 +323,10 @@ export const routeTree = rootRoute
       "children": [
         "/_mainLayout/assistantTools",
         "/_mainLayout/first3d",
+        "/_mainLayout/fox01",
         "/_mainLayout/geometry01",
         "/_mainLayout/geometry02",
+        "/_mainLayout/gltf01",
         "/_mainLayout/texture01",
         "/_mainLayout/texture02"
       ]
@@ -296,12 +342,20 @@ export const routeTree = rootRoute
       "filePath": "_mainLayout/first3d.tsx",
       "parent": "/_mainLayout"
     },
+    "/_mainLayout/fox01": {
+      "filePath": "_mainLayout/fox01.tsx",
+      "parent": "/_mainLayout"
+    },
     "/_mainLayout/geometry01": {
       "filePath": "_mainLayout/geometry01.tsx",
       "parent": "/_mainLayout"
     },
     "/_mainLayout/geometry02": {
       "filePath": "_mainLayout/geometry02.tsx",
+      "parent": "/_mainLayout"
+    },
+    "/_mainLayout/gltf01": {
+      "filePath": "_mainLayout/gltf01.tsx",
       "parent": "/_mainLayout"
     },
     "/_mainLayout/texture01": {
