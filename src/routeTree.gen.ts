@@ -14,8 +14,12 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as AboutImport } from './routes/about'
 import { Route as MainLayoutImport } from './routes/_mainLayout'
 import { Route as IndexImport } from './routes/index'
+import { Route as MainLayoutUv01Import } from './routes/_mainLayout/uv01'
+import { Route as MainLayoutTweenImport } from './routes/_mainLayout/tween'
 import { Route as MainLayoutTexture02Import } from './routes/_mainLayout/texture02'
 import { Route as MainLayoutTexture01Import } from './routes/_mainLayout/texture01'
+import { Route as MainLayoutRaycaster01Import } from './routes/_mainLayout/raycaster01'
+import { Route as MainLayoutNormal01Import } from './routes/_mainLayout/normal01'
 import { Route as MainLayoutGltf01Import } from './routes/_mainLayout/gltf01'
 import { Route as MainLayoutGeometry02Import } from './routes/_mainLayout/geometry02'
 import { Route as MainLayoutGeometry01Import } from './routes/_mainLayout/geometry01'
@@ -42,6 +46,18 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const MainLayoutUv01Route = MainLayoutUv01Import.update({
+  id: '/uv01',
+  path: '/uv01',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
+const MainLayoutTweenRoute = MainLayoutTweenImport.update({
+  id: '/tween',
+  path: '/tween',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
 const MainLayoutTexture02Route = MainLayoutTexture02Import.update({
   id: '/texture02',
   path: '/texture02',
@@ -51,6 +67,18 @@ const MainLayoutTexture02Route = MainLayoutTexture02Import.update({
 const MainLayoutTexture01Route = MainLayoutTexture01Import.update({
   id: '/texture01',
   path: '/texture01',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
+const MainLayoutRaycaster01Route = MainLayoutRaycaster01Import.update({
+  id: '/raycaster01',
+  path: '/raycaster01',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
+const MainLayoutNormal01Route = MainLayoutNormal01Import.update({
+  id: '/normal01',
+  path: '/normal01',
   getParentRoute: () => MainLayoutRoute,
 } as any)
 
@@ -157,6 +185,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainLayoutGltf01Import
       parentRoute: typeof MainLayoutImport
     }
+    '/_mainLayout/normal01': {
+      id: '/_mainLayout/normal01'
+      path: '/normal01'
+      fullPath: '/normal01'
+      preLoaderRoute: typeof MainLayoutNormal01Import
+      parentRoute: typeof MainLayoutImport
+    }
+    '/_mainLayout/raycaster01': {
+      id: '/_mainLayout/raycaster01'
+      path: '/raycaster01'
+      fullPath: '/raycaster01'
+      preLoaderRoute: typeof MainLayoutRaycaster01Import
+      parentRoute: typeof MainLayoutImport
+    }
     '/_mainLayout/texture01': {
       id: '/_mainLayout/texture01'
       path: '/texture01'
@@ -171,6 +213,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainLayoutTexture02Import
       parentRoute: typeof MainLayoutImport
     }
+    '/_mainLayout/tween': {
+      id: '/_mainLayout/tween'
+      path: '/tween'
+      fullPath: '/tween'
+      preLoaderRoute: typeof MainLayoutTweenImport
+      parentRoute: typeof MainLayoutImport
+    }
+    '/_mainLayout/uv01': {
+      id: '/_mainLayout/uv01'
+      path: '/uv01'
+      fullPath: '/uv01'
+      preLoaderRoute: typeof MainLayoutUv01Import
+      parentRoute: typeof MainLayoutImport
+    }
   }
 }
 
@@ -183,8 +239,12 @@ interface MainLayoutRouteChildren {
   MainLayoutGeometry01Route: typeof MainLayoutGeometry01Route
   MainLayoutGeometry02Route: typeof MainLayoutGeometry02Route
   MainLayoutGltf01Route: typeof MainLayoutGltf01Route
+  MainLayoutNormal01Route: typeof MainLayoutNormal01Route
+  MainLayoutRaycaster01Route: typeof MainLayoutRaycaster01Route
   MainLayoutTexture01Route: typeof MainLayoutTexture01Route
   MainLayoutTexture02Route: typeof MainLayoutTexture02Route
+  MainLayoutTweenRoute: typeof MainLayoutTweenRoute
+  MainLayoutUv01Route: typeof MainLayoutUv01Route
 }
 
 const MainLayoutRouteChildren: MainLayoutRouteChildren = {
@@ -194,8 +254,12 @@ const MainLayoutRouteChildren: MainLayoutRouteChildren = {
   MainLayoutGeometry01Route: MainLayoutGeometry01Route,
   MainLayoutGeometry02Route: MainLayoutGeometry02Route,
   MainLayoutGltf01Route: MainLayoutGltf01Route,
+  MainLayoutNormal01Route: MainLayoutNormal01Route,
+  MainLayoutRaycaster01Route: MainLayoutRaycaster01Route,
   MainLayoutTexture01Route: MainLayoutTexture01Route,
   MainLayoutTexture02Route: MainLayoutTexture02Route,
+  MainLayoutTweenRoute: MainLayoutTweenRoute,
+  MainLayoutUv01Route: MainLayoutUv01Route,
 }
 
 const MainLayoutRouteWithChildren = MainLayoutRoute._addFileChildren(
@@ -212,8 +276,12 @@ export interface FileRoutesByFullPath {
   '/geometry01': typeof MainLayoutGeometry01Route
   '/geometry02': typeof MainLayoutGeometry02Route
   '/gltf01': typeof MainLayoutGltf01Route
+  '/normal01': typeof MainLayoutNormal01Route
+  '/raycaster01': typeof MainLayoutRaycaster01Route
   '/texture01': typeof MainLayoutTexture01Route
   '/texture02': typeof MainLayoutTexture02Route
+  '/tween': typeof MainLayoutTweenRoute
+  '/uv01': typeof MainLayoutUv01Route
 }
 
 export interface FileRoutesByTo {
@@ -226,8 +294,12 @@ export interface FileRoutesByTo {
   '/geometry01': typeof MainLayoutGeometry01Route
   '/geometry02': typeof MainLayoutGeometry02Route
   '/gltf01': typeof MainLayoutGltf01Route
+  '/normal01': typeof MainLayoutNormal01Route
+  '/raycaster01': typeof MainLayoutRaycaster01Route
   '/texture01': typeof MainLayoutTexture01Route
   '/texture02': typeof MainLayoutTexture02Route
+  '/tween': typeof MainLayoutTweenRoute
+  '/uv01': typeof MainLayoutUv01Route
 }
 
 export interface FileRoutesById {
@@ -241,8 +313,12 @@ export interface FileRoutesById {
   '/_mainLayout/geometry01': typeof MainLayoutGeometry01Route
   '/_mainLayout/geometry02': typeof MainLayoutGeometry02Route
   '/_mainLayout/gltf01': typeof MainLayoutGltf01Route
+  '/_mainLayout/normal01': typeof MainLayoutNormal01Route
+  '/_mainLayout/raycaster01': typeof MainLayoutRaycaster01Route
   '/_mainLayout/texture01': typeof MainLayoutTexture01Route
   '/_mainLayout/texture02': typeof MainLayoutTexture02Route
+  '/_mainLayout/tween': typeof MainLayoutTweenRoute
+  '/_mainLayout/uv01': typeof MainLayoutUv01Route
 }
 
 export interface FileRouteTypes {
@@ -257,8 +333,12 @@ export interface FileRouteTypes {
     | '/geometry01'
     | '/geometry02'
     | '/gltf01'
+    | '/normal01'
+    | '/raycaster01'
     | '/texture01'
     | '/texture02'
+    | '/tween'
+    | '/uv01'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -270,8 +350,12 @@ export interface FileRouteTypes {
     | '/geometry01'
     | '/geometry02'
     | '/gltf01'
+    | '/normal01'
+    | '/raycaster01'
     | '/texture01'
     | '/texture02'
+    | '/tween'
+    | '/uv01'
   id:
     | '__root__'
     | '/'
@@ -283,8 +367,12 @@ export interface FileRouteTypes {
     | '/_mainLayout/geometry01'
     | '/_mainLayout/geometry02'
     | '/_mainLayout/gltf01'
+    | '/_mainLayout/normal01'
+    | '/_mainLayout/raycaster01'
     | '/_mainLayout/texture01'
     | '/_mainLayout/texture02'
+    | '/_mainLayout/tween'
+    | '/_mainLayout/uv01'
   fileRoutesById: FileRoutesById
 }
 
@@ -327,8 +415,12 @@ export const routeTree = rootRoute
         "/_mainLayout/geometry01",
         "/_mainLayout/geometry02",
         "/_mainLayout/gltf01",
+        "/_mainLayout/normal01",
+        "/_mainLayout/raycaster01",
         "/_mainLayout/texture01",
-        "/_mainLayout/texture02"
+        "/_mainLayout/texture02",
+        "/_mainLayout/tween",
+        "/_mainLayout/uv01"
       ]
     },
     "/about": {
@@ -358,12 +450,28 @@ export const routeTree = rootRoute
       "filePath": "_mainLayout/gltf01.tsx",
       "parent": "/_mainLayout"
     },
+    "/_mainLayout/normal01": {
+      "filePath": "_mainLayout/normal01.tsx",
+      "parent": "/_mainLayout"
+    },
+    "/_mainLayout/raycaster01": {
+      "filePath": "_mainLayout/raycaster01.tsx",
+      "parent": "/_mainLayout"
+    },
     "/_mainLayout/texture01": {
       "filePath": "_mainLayout/texture01.tsx",
       "parent": "/_mainLayout"
     },
     "/_mainLayout/texture02": {
       "filePath": "_mainLayout/texture02.tsx",
+      "parent": "/_mainLayout"
+    },
+    "/_mainLayout/tween": {
+      "filePath": "_mainLayout/tween.tsx",
+      "parent": "/_mainLayout"
+    },
+    "/_mainLayout/uv01": {
+      "filePath": "_mainLayout/uv01.tsx",
       "parent": "/_mainLayout"
     }
   }
