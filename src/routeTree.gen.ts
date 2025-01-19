@@ -25,6 +25,9 @@ import { Route as MainLayoutGeometry02Import } from './routes/_mainLayout/geomet
 import { Route as MainLayoutGeometry01Import } from './routes/_mainLayout/geometry01'
 import { Route as MainLayoutFox01Import } from './routes/_mainLayout/fox01'
 import { Route as MainLayoutFirst3dImport } from './routes/_mainLayout/first3d'
+import { Route as MainLayoutCenter01Import } from './routes/_mainLayout/center01'
+import { Route as MainLayoutBoundingbox02Import } from './routes/_mainLayout/boundingbox02'
+import { Route as MainLayoutBoundingbox01Import } from './routes/_mainLayout/boundingbox01'
 import { Route as MainLayoutAssistantToolsImport } from './routes/_mainLayout/assistantTools'
 
 // Create/Update Routes
@@ -112,6 +115,24 @@ const MainLayoutFirst3dRoute = MainLayoutFirst3dImport.update({
   getParentRoute: () => MainLayoutRoute,
 } as any)
 
+const MainLayoutCenter01Route = MainLayoutCenter01Import.update({
+  id: '/center01',
+  path: '/center01',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
+const MainLayoutBoundingbox02Route = MainLayoutBoundingbox02Import.update({
+  id: '/boundingbox02',
+  path: '/boundingbox02',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
+const MainLayoutBoundingbox01Route = MainLayoutBoundingbox01Import.update({
+  id: '/boundingbox01',
+  path: '/boundingbox01',
+  getParentRoute: () => MainLayoutRoute,
+} as any)
+
 const MainLayoutAssistantToolsRoute = MainLayoutAssistantToolsImport.update({
   id: '/assistantTools',
   path: '/assistantTools',
@@ -148,6 +169,27 @@ declare module '@tanstack/react-router' {
       path: '/assistantTools'
       fullPath: '/assistantTools'
       preLoaderRoute: typeof MainLayoutAssistantToolsImport
+      parentRoute: typeof MainLayoutImport
+    }
+    '/_mainLayout/boundingbox01': {
+      id: '/_mainLayout/boundingbox01'
+      path: '/boundingbox01'
+      fullPath: '/boundingbox01'
+      preLoaderRoute: typeof MainLayoutBoundingbox01Import
+      parentRoute: typeof MainLayoutImport
+    }
+    '/_mainLayout/boundingbox02': {
+      id: '/_mainLayout/boundingbox02'
+      path: '/boundingbox02'
+      fullPath: '/boundingbox02'
+      preLoaderRoute: typeof MainLayoutBoundingbox02Import
+      parentRoute: typeof MainLayoutImport
+    }
+    '/_mainLayout/center01': {
+      id: '/_mainLayout/center01'
+      path: '/center01'
+      fullPath: '/center01'
+      preLoaderRoute: typeof MainLayoutCenter01Import
       parentRoute: typeof MainLayoutImport
     }
     '/_mainLayout/first3d': {
@@ -234,6 +276,9 @@ declare module '@tanstack/react-router' {
 
 interface MainLayoutRouteChildren {
   MainLayoutAssistantToolsRoute: typeof MainLayoutAssistantToolsRoute
+  MainLayoutBoundingbox01Route: typeof MainLayoutBoundingbox01Route
+  MainLayoutBoundingbox02Route: typeof MainLayoutBoundingbox02Route
+  MainLayoutCenter01Route: typeof MainLayoutCenter01Route
   MainLayoutFirst3dRoute: typeof MainLayoutFirst3dRoute
   MainLayoutFox01Route: typeof MainLayoutFox01Route
   MainLayoutGeometry01Route: typeof MainLayoutGeometry01Route
@@ -249,6 +294,9 @@ interface MainLayoutRouteChildren {
 
 const MainLayoutRouteChildren: MainLayoutRouteChildren = {
   MainLayoutAssistantToolsRoute: MainLayoutAssistantToolsRoute,
+  MainLayoutBoundingbox01Route: MainLayoutBoundingbox01Route,
+  MainLayoutBoundingbox02Route: MainLayoutBoundingbox02Route,
+  MainLayoutCenter01Route: MainLayoutCenter01Route,
   MainLayoutFirst3dRoute: MainLayoutFirst3dRoute,
   MainLayoutFox01Route: MainLayoutFox01Route,
   MainLayoutGeometry01Route: MainLayoutGeometry01Route,
@@ -271,6 +319,9 @@ export interface FileRoutesByFullPath {
   '': typeof MainLayoutRouteWithChildren
   '/about': typeof AboutRoute
   '/assistantTools': typeof MainLayoutAssistantToolsRoute
+  '/boundingbox01': typeof MainLayoutBoundingbox01Route
+  '/boundingbox02': typeof MainLayoutBoundingbox02Route
+  '/center01': typeof MainLayoutCenter01Route
   '/first3d': typeof MainLayoutFirst3dRoute
   '/fox01': typeof MainLayoutFox01Route
   '/geometry01': typeof MainLayoutGeometry01Route
@@ -289,6 +340,9 @@ export interface FileRoutesByTo {
   '': typeof MainLayoutRouteWithChildren
   '/about': typeof AboutRoute
   '/assistantTools': typeof MainLayoutAssistantToolsRoute
+  '/boundingbox01': typeof MainLayoutBoundingbox01Route
+  '/boundingbox02': typeof MainLayoutBoundingbox02Route
+  '/center01': typeof MainLayoutCenter01Route
   '/first3d': typeof MainLayoutFirst3dRoute
   '/fox01': typeof MainLayoutFox01Route
   '/geometry01': typeof MainLayoutGeometry01Route
@@ -308,6 +362,9 @@ export interface FileRoutesById {
   '/_mainLayout': typeof MainLayoutRouteWithChildren
   '/about': typeof AboutRoute
   '/_mainLayout/assistantTools': typeof MainLayoutAssistantToolsRoute
+  '/_mainLayout/boundingbox01': typeof MainLayoutBoundingbox01Route
+  '/_mainLayout/boundingbox02': typeof MainLayoutBoundingbox02Route
+  '/_mainLayout/center01': typeof MainLayoutCenter01Route
   '/_mainLayout/first3d': typeof MainLayoutFirst3dRoute
   '/_mainLayout/fox01': typeof MainLayoutFox01Route
   '/_mainLayout/geometry01': typeof MainLayoutGeometry01Route
@@ -328,6 +385,9 @@ export interface FileRouteTypes {
     | ''
     | '/about'
     | '/assistantTools'
+    | '/boundingbox01'
+    | '/boundingbox02'
+    | '/center01'
     | '/first3d'
     | '/fox01'
     | '/geometry01'
@@ -345,6 +405,9 @@ export interface FileRouteTypes {
     | ''
     | '/about'
     | '/assistantTools'
+    | '/boundingbox01'
+    | '/boundingbox02'
+    | '/center01'
     | '/first3d'
     | '/fox01'
     | '/geometry01'
@@ -362,6 +425,9 @@ export interface FileRouteTypes {
     | '/_mainLayout'
     | '/about'
     | '/_mainLayout/assistantTools'
+    | '/_mainLayout/boundingbox01'
+    | '/_mainLayout/boundingbox02'
+    | '/_mainLayout/center01'
     | '/_mainLayout/first3d'
     | '/_mainLayout/fox01'
     | '/_mainLayout/geometry01'
@@ -410,6 +476,9 @@ export const routeTree = rootRoute
       "filePath": "_mainLayout.tsx",
       "children": [
         "/_mainLayout/assistantTools",
+        "/_mainLayout/boundingbox01",
+        "/_mainLayout/boundingbox02",
+        "/_mainLayout/center01",
         "/_mainLayout/first3d",
         "/_mainLayout/fox01",
         "/_mainLayout/geometry01",
@@ -428,6 +497,18 @@ export const routeTree = rootRoute
     },
     "/_mainLayout/assistantTools": {
       "filePath": "_mainLayout/assistantTools.tsx",
+      "parent": "/_mainLayout"
+    },
+    "/_mainLayout/boundingbox01": {
+      "filePath": "_mainLayout/boundingbox01.tsx",
+      "parent": "/_mainLayout"
+    },
+    "/_mainLayout/boundingbox02": {
+      "filePath": "_mainLayout/boundingbox02.tsx",
+      "parent": "/_mainLayout"
+    },
+    "/_mainLayout/center01": {
+      "filePath": "_mainLayout/center01.tsx",
       "parent": "/_mainLayout"
     },
     "/_mainLayout/first3d": {
